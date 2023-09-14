@@ -8,10 +8,11 @@
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_hmgg3")
-SPEED = 5.0
-JUMP_VELOCITY = 4.5
 
 [node name="Pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683979, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_cxcn6")

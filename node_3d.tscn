@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://weh4isp3g4j7"]
+[gd_scene load_steps=4 format=3 uid="uid://weh4isp3g4j7"]
+
+[ext_resource type="PackedScene" uid="uid://bmqjxtqmx4e04" path="res://player.tscn" id="1_y3022"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyhdm"]
 
@@ -23,3 +25,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.6917, 1.60163)
 light_energy = 0.992
 shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_y3022")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.811825, 0)
