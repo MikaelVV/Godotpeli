@@ -6,7 +6,9 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="StartGameButton" type="Button" parent="."]
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="StartGameButton" type="Button" parent="Buttons"]
 offset_left = -72.0
 offset_top = -16.0
 offset_right = 78.0
@@ -14,7 +16,7 @@ offset_bottom = 17.0
 text = "Start Game"
 script = ExtResource("1_p2jj5")
 
-[node name="OptionsButton" type="Button" parent="."]
+[node name="OptionsButton" type="Button" parent="Buttons"]
 offset_left = -72.0
 offset_top = 39.0
 offset_right = 78.0
@@ -22,7 +24,7 @@ offset_bottom = 72.0
 text = "Options"
 script = ExtResource("1_p2jj5")
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="QuitButton" type="Button" parent="Buttons"]
 offset_left = -72.0
 offset_top = 90.559
 offset_right = 78.0
@@ -30,6 +32,6 @@ offset_bottom = 123.559
 text = "Quit"
 script = ExtResource("1_p2jj5")
 
-[connection signal="pressed" from="StartGameButton" to="StartGameButton" method="_on_pressed"]
-[connection signal="pressed" from="OptionsButton" to="QuitButton" method="_on_options_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="StartGameButton" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Buttons/StartGameButton" to="Buttons/StartGameButton" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/OptionsButton" to="Buttons/QuitButton" method="_on_options_button_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="Buttons/StartGameButton" method="_on_quit_button_pressed"]
