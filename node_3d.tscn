@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://weh4isp3g4j7"]
+[gd_scene load_steps=5 format=3 uid="uid://weh4isp3g4j7"]
 
 [ext_resource type="PackedScene" uid="uid://bmqjxtqmx4e04" path="res://player.tscn" id="1_y3022"]
+[ext_resource type="PackedScene" uid="uid://cvqqkko84pevy" path="res://Weapons/Weapon1.glb" id="2_7wu12"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyhdm"]
 
@@ -88,3 +89,6 @@ shape = SubResource("BoxShape3D_kyhdm")
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
 mesh = SubResource("BoxMesh_01wb7")
 skeleton = NodePath("../../Ground2")
+
+[node name="Weapon1" parent="." instance=ExtResource("2_7wu12")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.05159, 3.58469, -9.11311)
