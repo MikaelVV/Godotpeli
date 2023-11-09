@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmqjxtqmx4e04"]
 
-[ext_resource type="Script" path="res://PlayerController.gd" id="1_hmgg3"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_15rco"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cxcn6"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_h378m"]
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_hmgg3")
+script = ExtResource("1_15rco")
 
 [node name="Pivot" type="Node3D" parent="."]
 

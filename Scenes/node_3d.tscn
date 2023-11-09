@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://weh4isp3g4j7"]
 
-[ext_resource type="PackedScene" uid="uid://bmqjxtqmx4e04" path="res://player.tscn" id="1_y3022"]
+[ext_resource type="PackedScene" uid="uid://bmqjxtqmx4e04" path="res://Scenes/player.tscn" id="1_y3022"]
 [ext_resource type="PackedScene" uid="uid://cvqqkko84pevy" path="res://Weapons/Weapon1.glb" id="2_7wu12"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyhdm"]
