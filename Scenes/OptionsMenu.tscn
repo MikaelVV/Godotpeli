@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkfhn257rcpp1"]
+
+[ext_resource type="Script" path="res://Scripts/OptionsMenuController.gd" id="1_sxlop"]
+
+[node name="OptionsMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="BackButton" type="Button" parent="Buttons"]
+offset_left = -460.0
+offset_top = 169.0
+offset_right = -251.0
+offset_bottom = 215.0
+text = "Back"
+script = ExtResource("1_sxlop")
+
+[connection signal="pressed" from="Buttons/BackButton" to="Buttons/BackButton" method="_on_pressed"]
