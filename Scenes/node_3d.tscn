@@ -1,7 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://weh4isp3g4j7"]
+[gd_scene load_steps=8 format=3 uid="uid://weh4isp3g4j7"]
 
 [ext_resource type="PackedScene" uid="uid://bmqjxtqmx4e04" path="res://Scenes/player.tscn" id="1_y3022"]
 [ext_resource type="PackedScene" uid="uid://cvqqkko84pevy" path="res://Weapons/Weapon1.glb" id="2_7wu12"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_atm0j"]
+sky_top_color = Color(0.164706, 0.266667, 0.752941, 1)
+sky_horizon_color = Color(0.563725, 0.622549, 0.715686, 1)
+ground_bottom_color = Color(0.0901961, 0.223529, 0.109804, 1)
+ground_horizon_color = Color(0.563725, 0.622549, 0.715686, 1)
+
+[sub_resource type="Sky" id="Sky_5pdsd"]
+sky_material = SubResource("ProceduralSkyMaterial_atm0j")
+
+[sub_resource type="Environment" id="Environment_s3w0a"]
+background_mode = 2
+sky = SubResource("Sky_5pdsd")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyhdm"]
 
@@ -9,6 +24,9 @@
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.602809)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s3w0a")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597605, 0)
