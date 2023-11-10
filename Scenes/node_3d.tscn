@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://weh4isp3g4j7"]
+[gd_scene load_steps=10 format=3 uid="uid://weh4isp3g4j7"]
 
 [ext_resource type="PackedScene" uid="uid://bmqjxtqmx4e04" path="res://Scenes/player.tscn" id="1_y3022"]
 [ext_resource type="PackedScene" uid="uid://cvqqkko84pevy" path="res://Weapons/Weapon1.glb" id="2_7wu12"]
@@ -18,6 +18,10 @@ sky = SubResource("Sky_5pdsd")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_32tls"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ylel3"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyhdm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_01wb7"]
@@ -25,20 +29,93 @@ glow_enabled = true
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.602809)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Map" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_s3w0a")
 
-[node name="Ground" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="Map"]
+transform = Transform3D(150, 0, 0, 0, 1, 0, 0, 0, 150, -0.778069, -0.379952, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/StaticBody3D"]
+shape = SubResource("BoxShape3D_32tls")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/StaticBody3D"]
+mesh = SubResource("BoxMesh_ylel3")
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Building"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597605, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Ground"]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
 shape = SubResource("BoxShape3D_kyhdm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building/Ground"]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("BoxMesh_01wb7")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+
+[node name="Ground2" type="StaticBody3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.31659, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Ground2"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_kyhdm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building/Ground2"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("BoxMesh_01wb7")
+skeleton = NodePath("../../..")
+
+[node name="Pillar2" type="StaticBody3D" parent="Building"]
+transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, 9.44729, 4.4101, 9.50191)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Pillar2"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_kyhdm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building/Pillar2"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
+mesh = SubResource("BoxMesh_01wb7")
+skeleton = NodePath("../../Ground2")
+
+[node name="Pillar3" type="StaticBody3D" parent="Building"]
+transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, 9.44738, 4.41716, -9.47668)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Pillar3"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_kyhdm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building/Pillar3"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
+mesh = SubResource("BoxMesh_01wb7")
+skeleton = NodePath("../../Ground2")
+
+[node name="Pillar4" type="StaticBody3D" parent="Building"]
+transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, -9.4411, 4.41716, -9.47668)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Pillar4"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_kyhdm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building/Pillar4"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
+mesh = SubResource("BoxMesh_01wb7")
+skeleton = NodePath("../../Ground2")
+
+[node name="Pillar5" type="StaticBody3D" parent="Building"]
+transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, -9.43588, 4.4101, 9.50191)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Pillar5"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_kyhdm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building/Pillar5"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
+mesh = SubResource("BoxMesh_01wb7")
+skeleton = NodePath("../../Ground2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.2893, 1.60163)
@@ -48,65 +125,5 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_y3022")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40943, 0)
 
-[node name="Ground2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.31659, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-shape = SubResource("BoxShape3D_kyhdm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground2"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-mesh = SubResource("BoxMesh_01wb7")
-skeleton = NodePath("../..")
-
-[node name="Pillar2" type="StaticBody3D" parent="."]
-transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, 9.44729, 4.4101, 9.50191)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar2"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-shape = SubResource("BoxShape3D_kyhdm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar2"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
-mesh = SubResource("BoxMesh_01wb7")
-skeleton = NodePath("../../Ground2")
-
-[node name="Pillar3" type="StaticBody3D" parent="."]
-transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, 9.44738, 4.41716, -9.47668)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar3"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-shape = SubResource("BoxShape3D_kyhdm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar3"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
-mesh = SubResource("BoxMesh_01wb7")
-skeleton = NodePath("../../Ground2")
-
-[node name="Pillar4" type="StaticBody3D" parent="."]
-transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, -9.4411, 4.41716, -9.47668)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar4"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-shape = SubResource("BoxShape3D_kyhdm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar4"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
-mesh = SubResource("BoxMesh_01wb7")
-skeleton = NodePath("../../Ground2")
-
-[node name="Pillar5" type="StaticBody3D" parent="."]
-transform = Transform3D(0.056, 0, 0, 0, 6.75, 0, 0, 0, 0.051, -9.43588, 4.4101, 9.50191)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar5"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-shape = SubResource("BoxShape3D_kyhdm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar5"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.00698286, -0.387848)
-mesh = SubResource("BoxMesh_01wb7")
-skeleton = NodePath("../../Ground2")
-
 [node name="Weapon1" parent="." instance=ExtResource("2_7wu12")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.05159, 3.58469, -9.11311)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.98356, 2.63205, -9.11311)

@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 @export var HEALTH = 100
-@export var SPEED = 5
-@export var JUMP_VELOCITY = 4
+@export var SPEED = 10
+@export var JUMP_VELOCITY = 6
 
 # Määritellään pelaajan pivot ja camera variablet.
 @onready var pivot := $Pivot
