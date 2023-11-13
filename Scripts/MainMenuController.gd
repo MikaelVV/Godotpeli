@@ -11,7 +11,7 @@ func _process(_delta):
 
 
 func _on_pressed():
-	get_tree().change_scene_to_file("res://Scenes/node_3d.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Main01.tscn")
 
 
 func _on_quit_button_pressed():

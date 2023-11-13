@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ssfe0w0dhfp"]
+
+[ext_resource type="PackedScene" uid="uid://bmqjxtqmx4e04" path="res://Scenes/player.tscn" id="1_temvh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uo46l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odtyl"]
+
+[node name="Main01" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_temvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189922, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.992364, 0.123342, 0, -0.123342, 0.992364, 0, 28.7523, -0.19884)
+light_color = Color(1, 0.717647, 0.462745, 1)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.977267, 0)
+physics_material_override = SubResource("PhysicsMaterial_uo46l")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481408, 0)
+shape = SubResource("BoxShape3D_odtyl")
