@@ -1,17 +1,22 @@
 extends CharacterBody3D
 
-@export var HEALTH = 100
+signal health_updated(health)
+signal killed()
+
+
+@export var max_health = 100
 @export var SPEED = 10
 @export var JUMP_VELOCITY = 6
 
-# Määritellään pelaajan pivot ja camera variablet.
+# Määritellään pelaajan health, pivot ja camera variablet.
+@onready var health = max_health : set = _set_health
 @onready var pivot := $Pivot
 @onready var camera := $Pivot/Camera3D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-# Function "kuuntelee" kaikkia inputteja, joka tässä tapauksessa on hiiri
+# Function "kuuntelee" kaikkia inputteja, joka tässä tapauksessa on hiiri.
 # ja määrittelee hiiren liikkuvuuden kameran kanssa.
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -45,3 +50,21 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+#Määritellään pelaajan ottama damagen määrä.
+func damage(amount):
+	_set_health(health - amount)
+
+#Nimensä mukainen funktio. Tässä toteutetaan kaikki logiikka, jolla pelaaja tuhotaan.
+func kill_player():
+	pass
+
+# Tässä funktiossa määrittellään pelaajan nykyinen ja edellinen health value. Myös toteutetaan kill_player funktio, jos pelaajan health value on 0.
+func _set_health(value):
+	var prev_health = health
+	health = clamp(value, 0, max_health)
+	if health != prev_health:
+		emit_signal("health_updated", health)
+		if health == 0:
+			kill_player()
+	
